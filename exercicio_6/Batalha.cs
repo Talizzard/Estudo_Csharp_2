@@ -1,20 +1,21 @@
 namespace RPGPOO {
     class Batalha {
         public bool BatalhaAtiva = true;
-        public void AtaqueInimigo (Inimigo ini, Paladino pal) {
+        public void AtaqueInimigo (Inimigo ini, Personagem perso) {
             Console.WriteLine($"O {ini.Nome} lhe atacou");
-            pal.Vida -= ini.Dano;
-            pal.ExibirStats(pal);
+            perso.Vida -= ini.Dano;
+            perso.ExibirStats(perso);
         }
 
-        public void SeuAtaque (Inimigo ini, Paladino pal) {
-            Console.WriteLine($"{pal.Nome} o ataca!");
-            ini.Vida -= pal.Dano;
+        public void SeuAtaque (Inimigo ini, Personagem perso) {
+            Console.WriteLine($"{perso.Nome} o ataca!");
+            ini.Vida -= perso.Dano;
             if(ini.Vida<=0) {
-                Console.WriteLine($"{pal.Nome} derrotou o {ini.Nome}!");
-                Console.WriteLine($"Ganhe {pal.XpComum()} de XP");
-                pal.Xp += pal.XpComum();
-                pal.LevelUp();
+                int xpGerado = perso.XpComum();
+                Console.WriteLine($"{perso.Nome} derrotou o {ini.Nome}!");
+                Console.WriteLine($"Ganhe {xpGerado} de XP");
+                perso.Xp += xpGerado;
+                perso.LevelUp();
                 BatalhaAtiva = false;
             }
         }

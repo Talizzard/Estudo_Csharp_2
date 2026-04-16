@@ -4,6 +4,7 @@ namespace RPGPOO {
         public int Nivel;
         public int Xp;
         public int Vida;
+        public int Dano;
 
         public Personagem (String nome, int nivel, int xp){
             Nome = nome;
